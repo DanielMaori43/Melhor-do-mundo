@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login - Portal Diablo</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .login-container {
+      max-width: 400px;
+      margin: 100px auto;
+      padding: 2rem;
+      background-color: #1a1a1a;
+      border-radius: 10px;
+      color: white;
+    }
+    input, button {
+      width: 100%;
+      padding: 0.7rem;
+      margin-bottom: 1rem;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #ff0000;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Login</h2>
+    <form onsubmit="return verificarLogin(event)">
+      <input type="text" id="usuario" placeholder="Usuário" required>
+      <input type="password" id="senha" placeholder="Senha" required>
+      <button type="submit">Entrar</button>
+    </form>
+    <p id="mensagem" style="color: red;"></p>
+  </div>
+
+  <script>
+    function verificarLogin(event) {
+    event.preventDefault();
+
+    const usuario = document.getElementById("usuario").value;
+    const senha = document.getElementById("senha").value;
+
+    if (usuario === "admin" && senha === "diablo123") {
+      // Salva um sinal no localStorage
+      localStorage.setItem("audioPermitido", "sim");
+
+      alert("Login bem-sucedido! Redirecionando...");
+      window.location.href = "index.html";
+    } else {
+      document.getElementById("mensagem").innerText = "Usuário ou senha incorretos.";
+    }
+  }
+  </script>
+</body>
+</html>
